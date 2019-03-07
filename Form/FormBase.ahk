@@ -17,7 +17,6 @@ class FormBase {
 
 
   close() {
-    hotkey := this.hotkey
     this.controller.activateHotkey("{ESC}")
   }
 

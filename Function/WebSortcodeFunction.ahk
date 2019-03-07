@@ -1,5 +1,5 @@
-#include %A_Scriptdir%\Function/FunctionBase.ahk
-#include %A_Scriptdir%/Form/WebSortcodeForm.ahk
+#include Function/FunctionBase.ahk
+#include Form/WebSortcodeForm.ahk
 
 
 class WebSortcodeFunction extends FunctionBase {

@@ -1,5 +1,5 @@
-#include %A_Scriptdir%/Function/FunctionBase.ahk
-#include %A_Scriptdir%/Form/StockMaintenanceForm.ahk
+#include Function/FunctionBase.ahk
+#include Form/StockMaintenanceForm.ahk
 
 
 class StockMaintenanceFunction extends FunctionBase {
@@ -99,14 +99,26 @@ class StockMaintenanceFunction extends FunctionBase {
     this.controller.cancelForm()
     this.controller.closeFunction()
 
-    barcodeEntryForm := this.getForm(StockMaintenanceForm.FORM_WAREHOUSE_ENTRY)
-    barcodeEntryForm.open()
-    barcodeEntryForm.submit(record)
-    ; Close dialog for next barcode record.
-    this.controller.cancelForm()
+    gtinEntryForm := this.getForm(StockMaintenanceForm.FORM_GTIN_ENTRY)
+    gtinEntryForm.open()
+    gtinEntryForm.submit(record)
+    ; Close dialog for next gtin record.
+    gtinEntryForm.close()
     this.controller.closeFunction()
 
     ; Close dialog for next master record.
+    this.controller.closeFunction()
+  }
+
+
+  createGtinRecord(record) {
+    this.findRecord(record)
+
+    gtinEntryForm := this.getForm(StockMaintenanceForm.FORM_GTIN_ENTRY)
+    gtinEntryForm.open()
+    gtinEntryForm.submit(record)
+    ; Close dialog for next gtin record.
+    gtinEntryForm.close()
     this.controller.closeFunction()
   }
 

@@ -3,7 +3,7 @@ SendMode, Input ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance force
 AutoTrim, Off ; Allow values to begin/end with whitespace characters such as `t.
 
-#include %A_Scriptdir%/LegacyAHK.ahk
+#include LegacyAHK.ahk
 
 
 class ThinClientController {
@@ -18,6 +18,11 @@ class ThinClientController {
 	; Sends a hotkey as keyboard input
 	activateHotkey(hotkey) {
 		AHK.send(hotkey)
+	}
+
+
+	closeAlert() {
+		AHK.send("{ESC}")
 	}
 
 

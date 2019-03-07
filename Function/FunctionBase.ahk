@@ -1,4 +1,4 @@
-#include %A_Scriptdir%/Form/FormBase.ahk
+#include Form/FormBase.ahk
 
 
 ; Controller for Pronto functions. Handles operations in functions.

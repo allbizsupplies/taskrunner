@@ -1,4 +1,4 @@
-#include %A_Scriptdir%/LegacyAHK.ahk
+#include LegacyAHK.ahk
 
 
 class DataReader {

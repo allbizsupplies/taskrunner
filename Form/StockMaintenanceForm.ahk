@@ -1,5 +1,5 @@
-#include %A_Scriptdir%/Function/FunctionBase.ahk
-#include %A_Scriptdir%/Form/FormBase.ahk
+#include Function/FunctionBase.ahk
+#include Form/FormBase.ahk
 
 
 class StockMaintenanceForm extends FormBase {
@@ -10,6 +10,9 @@ class StockMaintenanceForm extends FormBase {
   static FORM_CORRECT := "C"
   static FORM_ENTRY := "E"
   static FORM_FIND := "F"
+  static FORM_GTIN_CORRECT := "GC"
+  static FORM_GTIN_ENTRY := "GE"
+  static FORM_GTIN_FIND := "GF"
   static FORM_PRICE_CORRECT := "PC"
   static FORM_PRICE_ENTRY := "PE"
   static FORM_PRICE_FIND := "PF"
@@ -32,6 +35,7 @@ class StockMaintenanceForm extends FormBase {
     if (formName == this.FORM_CORRECT or formName == this.FORM_ENTRY) {
       ; Figure out the classname for the item type field
       ; (Expected to be Edit5 or Edit6)
+      ; @todo Perform this check after opening the form.
       if (strlen(this.controller.getText("Edit5")) == 1) {
         item_type_className := "Edit5"
       }
@@ -71,6 +75,7 @@ class StockMaintenanceForm extends FormBase {
       fields.push({ name: "reorder_policy", className: "", description: "Stock Reorder Report Policy, does not affect MRP. See [HELP]" })
       fields.push({ name: "planning_policy", className: "", description: "Planning Policy : used by the MRP System only. See [HELP]" })
       fields.push({ name: "buyer_code", className: "", description: "Enter the reorder buyer code. (see help)" })
+      fields.push({ name: "use_mss_price", className: "", description: "Price protection claim can be raised for this item, [Y]es, [N]o" })
       fields.push({ name: "alloc_code", className: "", description: "Enter store allocation code" })
     }
 
@@ -130,6 +135,21 @@ class StockMaintenanceForm extends FormBase {
       fields.push({ name: "min_cover", className: "Edit10", description: "Enter minimum number of days to cover with this warehouse" })
       fields.push({ name: "max_cover", className: "Edit11", description: "Enter maximum number of days to cover with this warehouse" })
       fields.push({ name: "replenish_multiple", className: "Edit12", description: "Enter replenish multiple for this receiving whse, this is only used in DRP" })
+    }
+
+    if (formName == this.FORM_GTIN_FIND or formName == this.FORM_GTIN_ENTRY) {
+      fields.push({ name: "gtin", className: "", description: "Enter Global Trade Item number or @ to generate a new GS1 number" })
+    }
+
+    if (formName == this.FORM_GTIN_CORRECT or formName == this.FORM_GTIN_ENTRY) {
+      fields.push({ name: "uom", className: "", description: "Saleable unit description e.g. EACH,KG,MTR,... [HELP]" })
+      fields.push({ name: "conversion", className: "", description: "Quantity this trade unit number represents" })
+      fields.push({ name: "length", className: "", description: "Length of GTIN" })
+      fields.push({ name: "width", className: "", description: "Width of GTIN" })
+      fields.push({ name: "height", className: "", description: "Height of GTIN" })
+      fields.push({ name: "weight", className: "", description: "Weight of GTIN" })
+      fields.push({ name: "own_box", className: "", description: "Does this item use its own box.  Any value in this field means YES. (ScanPack)" })
+      fields.push({ name: "publish", className: "", description: "Is this GTIN to be published?" })
     }
 
     return fields

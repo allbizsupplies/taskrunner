@@ -1,5 +1,5 @@
-#include %A_Scriptdir%/Function/FunctionBase.ahk
-#include %A_Scriptdir%/Form/ContractForm.ahk
+#include Function/FunctionBase.ahk
+#include Form/ContractForm.ahk
 
 
 class ContractFunction extends FunctionBase {
@@ -13,10 +13,23 @@ class ContractFunction extends FunctionBase {
   }
 
 
+  createRecord(record) {
+    ; Add the product to the contract.
+    entryForm := this.getForm(ContractForm.FORM_ENTER_PRODUCT)
+    entryForm.open()
+    entryForm.submit(record)
+
+    ; Add the extra pricing info.
+    correctForm := this.getForm(ContractForm.FORM_DETAIL)
+    correctForm.open()
+    correctForm.submit(record)
+  }
+
+
   updateRecord(record) {
     this.findRecord(record)
 
-    ; Submit the corrections
+    ; Submit the corrections.
     correctForm := this.getForm(ContractForm.FORM_DETAIL)
     correctForm.open()
     correctForm.submit(record)
@@ -40,7 +53,7 @@ class ContractFunction extends FunctionBase {
   deleteRecord(record) {
     this.findRecord(record)
 
-    ; Remove the record
+    ; Remove the record.
     this.controller.activateHotkey("R")
     this.controller.activateHotkey("Y")
   }

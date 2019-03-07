@@ -1,5 +1,5 @@
-#include %A_Scriptdir%/Function/FunctionBase.ahk
-#include %A_Scriptdir%/Form/ShelfTicketsForm.ahk
+#include Function/FunctionBase.ahk
+#include Form/ShelfTicketsForm.ahk
 
 
 class ShelfTicketsFunction extends FunctionBase {
