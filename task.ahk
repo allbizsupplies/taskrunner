@@ -1,10 +1,4 @@
 #include %A_Scriptdir% ; Set includes directory
-#include DataReader.ahk
-#include ThinClientController.ahk
-#include Function/ContractFunction.ahk
-#include Function/ShelfTicketsFunction.ahk
-#include Function/StockMaintenanceFunction.ahk
-#include Function/WebSortcodeFunction.ahk
 #include TaskRunner.ahk
 
 
