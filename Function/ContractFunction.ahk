@@ -18,11 +18,10 @@ class ContractFunction extends FunctionBase {
     entryForm := this.getForm(ContractForm.FORM_ENTER_PRODUCT)
     entryForm.open()
     entryForm.submit(record)
+    entryForm.close()
 
     ; Add the extra pricing info.
-    correctForm := this.getForm(ContractForm.FORM_DETAIL)
-    correctForm.open()
-    correctForm.submit(record)
+    this.updateRecord(record)
   }
 
 

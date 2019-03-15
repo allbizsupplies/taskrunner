@@ -7,7 +7,7 @@ class ContractForm extends FormBase {
 
   ; Hotkeys for forms.
   static FORM_OPEN_CONTRACT := ""
-  static FORM_ENTER_PRODUCT := "C"
+  static FORM_ENTER_PRODUCT := "E"
   static FORM_FIND_PRODUCT := "F"
   static FORM_DETAIL := "D"
 
@@ -26,14 +26,14 @@ class ContractForm extends FormBase {
 
     if (formName == this.FORM_ENTER_PRODUCT) {
       fields.push({ name: "item_code", description: "The item code used in our system" })
-      fields.push({ name: "qty_1", description: "" })
-      fields.push({ name: "price_1", description: "" })
-      fields.push({ name: "qty_2", description: "" })
-      fields.push({ name: "price_2", description: "" })
-      fields.push({ name: "qty_3", description: "" })
-      fields.push({ name: "price_3", description: "" })
-      fields.push({ name: "start_date", description: "" })
-      fields.push({ name: "end_date", description: "" })
+      fields.push({ name: "qty_1", description: "Enter the quantity break required" })
+      fields.push({ name: "price_1", description: "Enter the quantity break price required" })
+      fields.push({ name: "qty_2", description: "Enter the quantity break required" })
+      fields.push({ name: "price_2", description: "Enter the quantity break price required" })
+      fields.push({ name: "qty_3", description: "Enter the quantity break required" })
+      fields.push({ name: "price_3", description: "Enter the quantity break price required" })
+      fields.push({ name: "start_date", description: "Enter start date for this item on this contract if required" })
+      fields.push({ name: "end_date", description: "Enter end date for this item on this contract if required" })
     }
 
     if (formName == this.FORM_DETAIL) {
