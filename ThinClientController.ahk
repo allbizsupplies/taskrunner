@@ -63,14 +63,19 @@ class ThinClientController {
 		this.focusClient()
 		WinGetPos, winXPos, winYPos, winWidth, winHeight
 		
+		MouseGetPos, mouseOrigXPos, mouseOrigYPos
+		
 		; Move the mouse over the status bar, which is in the bottom left of the window.
 		mouseXPos := winXPos + 28
 		mouseYPos := winYPos + winHeight - 5
 		MouseMove, mouseXPos, mouseYPos
 
 		; Get the classname of the component under the mouse.
-		MouseGetPos,,,,statusBarClassname
+		MouseGetPos,,,, statusBarClassname
 		return statusBarClassname
+
+		; Return the mouse to its original position.
+		MouseMove, mouseOrigXPos, mouseOrigYPos
 	}
 
 
