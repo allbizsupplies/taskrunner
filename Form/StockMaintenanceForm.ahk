@@ -154,28 +154,5 @@ class StockMaintenanceForm extends FormBase {
 
     return fields
   }
-
-
-  ; open() {
-  ;   if (this.hotkey == this.FORM_SUPPLIER_CORRECT) {
-  ;     ; Open the supplier dialog and find the correct supplier
-  ;     findForm := this.fn.getForm(this.FORM_SUPPLIER_FIND)
-  ;     findForm.open()
-  ;     findForm.submit(record)
-  ;     ; Active the "Correct" form
-  ;     this.controller.activateHotkey("C")
-  ;   }
-  ;   else if (this.hotkey == this.FORM_WAREHOUSE_CORRECT) {
-  ;     ; Open the supplier dialog and find the correct supplier
-  ;     findForm := this.fn.getForm(this.FORM_WAREHOUSE_FIND)
-  ;     findForm.open()
-  ;     findForm.submit(record)
-  ;     ; Active the "Correct" form
-  ;     this.controller.activateHotkey("C")
-  ;   }
-  ;   else {
-  ;     ; Call the default behaviour defined in the parent function
-  ;     base.open()
-  ;   }
-  ; }
+  
 }
