@@ -10,7 +10,13 @@ class InvBulkMaintenanceForm extends FormBase {
   static FORM_UPDATE_GROUP := "G"
 
 
-  getFields(formName) {
+  __new(fn, formName) {
+    base.__new(fn, formName)
+    this.selectionFields := this.getSelectionFields(formName)
+  }
+
+
+  getSelectionFields(formName) {
     fields := {}
 
     if (formName == this.FORM_UPDATE_GROUP) {
@@ -28,11 +34,11 @@ class InvBulkMaintenanceForm extends FormBase {
 
       ; Fields for item type range.
       fields.push({ name: "start_item_type", description: "Enter the item type to start at. [HELP]." })
-      fields.push({ name: "end_item_type", description: "Enter the item type to end at. [HELP]." })
+      fields.push({ name: "end_item_type", description: "Enter the item type to end at." })
 
       ; Fields for condition.
       fields.push({ name: "start_condition", description: "Enter the condition to start at. [HELP]." })
-      fields.push({ name: "end_condition", description: "Enter the condition to end at. [HELP]." })
+      fields.push({ name: "end_condition", description: "Enter the condition to end at." })
 
       ; Fields for sales type.
       fields.push({ name: "start_sales_type", description: "Enter start sales type" })
@@ -46,11 +52,53 @@ class InvBulkMaintenanceForm extends FormBase {
       fields.push({ name: "abc_class", description: "Enter a Item Class Code, <spaces> for all [HELP]" })
     }
 
+    return fields
+  }
+
+
+  getFields(formName) {
+    fields := {}
+
     if (formName == this.FORM_UPDATE_GROUP) {
       fields.push({ name: "new_group", description: "Enter the new item group to change to" })
       fields.push({ name: "report", description: "Produce a report of updates performed" })
     }
 
     return fields
+  }
+
+
+  submit(values) {
+    this.submitForm(this.selectionFields, values)
+    this.controller.activateHotkey("{ENTER 2}")
+    this.submitForm(this.fields, values)
+    this.controller.activateHotkey("{ENTER 3}")
+  }
+
+
+  submitForm(fields, values) {
+    for index, field in fields {
+      if (field.condition) {
+        metCondition := this.testCondition(field.condition)
+        if (!metCondition) {
+          continue
+        }
+      }
+
+      fieldName := field.name
+      value := values[fieldName]
+      this.controller.sendOnStatus(value, field.description)
+
+      ; Close the form early if finish-at field given.
+      if (fieldName == this.finishAtFieldName) {
+        this.controller.activateHotkey("{F4}")
+        this.controller.waitClientNotStatus(field.description)
+      }
+    }
+
+    ; Wait until the form has closed after submitting final field.
+    if (index == this.selectionFields.maxIndex()) {
+      this.controller.waitClientNotStatus(field.description)
+    }
   }
 }

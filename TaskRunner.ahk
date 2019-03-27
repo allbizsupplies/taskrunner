@@ -2,6 +2,7 @@
 #include DataReader.ahk
 #include ThinClientController.ahk
 #include Function/ContractFunction.ahk
+#include Function/InvBulkMaintenanceFunction.ahk
 #include Function/ShelfTicketsFunction.ahk
 #include Function/StockMaintenanceFunction.ahk
 #include Function/WebSortcodeFunction.ahk
