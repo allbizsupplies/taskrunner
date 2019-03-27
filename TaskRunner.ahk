@@ -12,7 +12,6 @@ class TaskRunner {
 
   __new(companyName = "Allbiz Supplies Pty. Ltd.") {
     this.controller := new ThinClientController(companyName)
-    ; this.showGUI()
   }
 
 
