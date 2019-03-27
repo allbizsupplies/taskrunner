@@ -8,16 +8,14 @@ class InvBulkMaintenanceFunction extends FunctionBase {
   id := "INV.M111"
   
  
-  getSelectionForm(formName) {
+  getForm(formName) {
     return new InvBulkMaintenanceForm(this, formName)
   }
 
 
   updateGroup(record) {
-    selectonForm := this.getSelectionForm(InvBulkMaintenanceForm.FORM_UPDATE_GROUP)
-    selectonForm.open()
-    selectonForm.submit(record)
-
-    ; @todo
+    form := this.getForm(InvBulkMaintenanceForm.FORM_UPDATE_GROUP)
+    form.open()
+    form.submit(record)
   }
 }

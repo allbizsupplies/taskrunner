@@ -26,15 +26,6 @@ class TaskRunner {
   }
 
 
-  product(args) {
-    operation := args[1] . "Record"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new StockMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
   contract_item(args) {
     operation := args[1] . "Record"
     inputFile := args[2]
@@ -47,6 +38,15 @@ class TaskRunner {
       function[operation](item)
       function.close()
     }
+  }
+
+
+  product(args) {
+    operation := args[1] . "Record"
+    inputFile := args[2]
+    dataReader := new DataReader(inputFile)
+    function := new StockMaintenanceFunction(this.controller)
+    this.run(function, operation, dataReader.data)
   }
 
 
