@@ -17,8 +17,6 @@ class TaskRunner {
 
 
   run(function, operation, data) {
-    ; msgBox, 0, operation, %operation%
-    ; exitApp
     function.open()
     for index, item in data {
       function[operation](item)
