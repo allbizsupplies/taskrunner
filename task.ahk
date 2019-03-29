@@ -11,7 +11,7 @@ Loop, %0% {
 
 if (args[1] == "test") {
   args.removeAt(1)
-  companyName := 
+  companyName := "TEST-Allbiz"
 }
 else {
   companyName := "Allbiz Supplies Pty. Ltd."
