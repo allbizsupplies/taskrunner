@@ -106,7 +106,7 @@ class TaskRunner {
 
 
   price_recalc(args) {
-    inputFile := args[2]
+    inputFile := args[1]
     dataReader := new DataReader(inputFile)
     function := new PriceRecalcFunction(this.controller)
 
