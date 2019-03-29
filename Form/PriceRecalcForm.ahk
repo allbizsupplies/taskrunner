@@ -1,8 +1,7 @@
-
 #include Form/FormBase.ahk
 
 
-class WebSortcodeForm extends FormBase {
+class PriceRecalcForm extends FormBase {
 
 
   ; forms.

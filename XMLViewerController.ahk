@@ -6,7 +6,7 @@ AutoTrim, Off ; Allow values to begin/end with whitespace characters such as `t.
 #include LegacyAHK.ahk
 
 
-class ThinClientController {
+class XMLViewerController {
 
 
 	__new(windowTitle = "Pronto Xi Report Viewer") {
