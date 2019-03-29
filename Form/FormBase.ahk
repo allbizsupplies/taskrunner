@@ -44,11 +44,11 @@ class FormBase {
         this.controller.activateHotkey("{F4}")
         this.controller.waitClientNotStatus(field.description)
       }
-    }
 
-    ; Wait until the form has closed after submitting final field.
-    if (index == this.fields.maxIndex()) {
-      this.controller.waitClientNotStatus(field.description)
+      ; Wait until the form has closed after submitting final field.
+      if (index == this.fields.maxIndex()) {
+        this.controller.waitClientNotStatus(field.description)
+      }
     }
   }
 
