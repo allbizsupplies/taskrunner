@@ -14,6 +14,21 @@ class XMLViewerController {
 	}
 
 
+	; Sets focus on XML Viewer.
+	focusViewer()	{
+		title := this.companyName
+
+		; Throw fatal error if Pronto cannot be focused.
+		IfWinNotExist, %title%
+		{
+			fatalError("Could not focus on XML Viewer.")
+		}
+
+		; Set focus on Viewer. 
+		WinActivate, %title%
+	}
+
+
 	; Gets the message displayed in the client's status bar.
 	waitStatus(status, duration := 600)	{
 		title := this.windowTitle
@@ -26,6 +41,7 @@ class XMLViewerController {
 
 
 	close() {
+		this.focusViewer()
 		AHK.send("{ESC}")
 	}
 }
