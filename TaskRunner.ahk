@@ -111,7 +111,7 @@ class TaskRunner {
     dataReader := new DataReader(inputFile)
     function := new PriceRecalcFunction(this.controller)
 
-    for index, item in data {
+    for index, item in dataReader.data {
       function.open()
       function.runRecalc(item)
       function.close()
