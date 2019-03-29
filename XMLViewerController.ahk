@@ -20,7 +20,7 @@ class XMLViewerController {
     statusBarPart := 1
     interval := 1000
 
-    ; Wait 60 seconds for status to change
+    ; Wait for duration (in seconds) for status to change
     StatusBarWait, %status%, %duration%, %statusBarPart%, %title%,, %interval%
 	}
 
