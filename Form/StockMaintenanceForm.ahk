@@ -143,13 +143,16 @@ class StockMaintenanceForm extends FormBase {
       fields.push({ name: "gtin", className: "", description: "Enter Global Trade Item number or @ to generate a new GS1 number" })
     }
 
-    if (formName == this.FORM_GTIN_ENTRY) {
+    if (formName == this.FORM_GTIN_ENTRY or formName == this.FORM_GTIN_CORRECT) {
       fields.push({ name: "gtin", className: "", description: "Enter Global Trade Item number or @ to generate a new GS1 number" })
     }
 
+    if (formName == this.FORM_GTIN_CORRECT) {
+      fields.push({ name: "new_uom", className: "", description: "Saleable unit description e.g. EACH,KG,MTR,... [HELP]" })
+      fields.push({ name: "new_conv_factor", className: "", description: "Quantity this trade unit number represents" })
+    }
+
     if (formName == this.FORM_GTIN_CORRECT or formName == this.FORM_GTIN_ENTRY) {
-      fields.push({ name: "uom", className: "", description: "Saleable unit description e.g. EACH,KG,MTR,... [HELP]" })
-      fields.push({ name: "conv_factor", className: "", description: "Quantity this trade unit number represents" })
       fields.push({ name: "length", className: "", description: "Length of GTIN" })
       fields.push({ name: "width", className: "", description: "Width of GTIN" })
       fields.push({ name: "height", className: "", description: "Height of GTIN" })

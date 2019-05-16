@@ -60,6 +60,22 @@ class StockMaintenanceFunction extends FunctionBase {
   }
 
 
+  updateGtinRecord(record) {
+    this.findRecord(record)
+
+    ; Navigate to the correct gtin record
+    findForm := this.getForm(StockMaintenanceForm.FORM_GTIN_FIND)
+    findForm.open()
+    findForm.submit(record)
+
+    ; Submit the corrections
+    correctForm := this.getForm(StockMaintenanceForm.FORM_GTIN_CORRECT)
+    this.controller.activateHotkey("C")
+    correctForm.submit(record)
+    correctForm.close()
+  }
+
+
   updateWarehouseRecord(record) {
     this.findRecord(record)
 
@@ -185,7 +201,7 @@ class StockMaintenanceFunction extends FunctionBase {
   deleteGtinRecord(record) {
     this.findRecord(record)
 
-    ; Navigate to the correct supplier record
+    ; Navigate to the correct gtin record
     findForm := this.getForm(StockMaintenanceForm.FORM_GTIN_FIND)
     findForm.open()
     findForm.submit(record)
