@@ -111,6 +111,18 @@ class StockMaintenanceFunction extends FunctionBase {
   }
 
 
+  createSupplierRecord(record) {
+    this.findRecord(record)
+
+    entryForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_ENTRY)
+    entryForm.open()
+    entryForm.submit(record)
+    ; Close dialog for next supplier record.
+    entryForm.close()
+    this.controller.closeFunction()
+  }
+
+
   createGtinRecord(record) {
     this.findRecord(record)
 
@@ -136,6 +148,23 @@ class StockMaintenanceFunction extends FunctionBase {
     ; Remove the record
     this.controller.activateHotkey("R")
     this.controller.activateHotkey("Y")
+  }
+
+
+  deletePriceRecord(record) {
+    this.findRecord(record)
+
+    ; Navigate to the correct price record.
+    findForm := this.getForm(StockMaintenanceForm.FORM_PRICE_FIND)
+    findForm.open()
+    findForm.submit(record)
+
+    ; Remove the record.
+    this.controller.activateHotkey("R")
+    this.controller.activateHotkey("Y")
+
+    ; Close the price record modal.
+    this.controller.activateHotkey("{ESC}")
   }
 
 
