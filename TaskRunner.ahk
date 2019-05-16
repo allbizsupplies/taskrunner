@@ -5,6 +5,7 @@
 #include Function/InvBulkMaintenanceFunction.ahk
 #include Function/PriceRecalcFunction.ahk
 #include Function/ShelfTicketsFunction.ahk
+#include Function/StockAdjustmentFunction.ahk
 #include Function/StockMaintenanceFunction.ahk
 #include Function/WebSortcodeFunction.ahk
 
@@ -21,6 +22,17 @@ class TaskRunner {
     function.open()
     for index, item in data {
       function[operation](item)
+    }
+  }
+
+
+  adjustment(args) {
+    inputFile := args[1]
+    dataReader := new DataReader(inputFile)
+    function := new StockAdjustmentFunction(this.controller)
+    function.open()
+    for index, item in dataReader.data {
+      function.createAdjustment(item)
     }
   }
 

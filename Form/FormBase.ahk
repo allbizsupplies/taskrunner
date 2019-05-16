@@ -16,6 +16,11 @@ class FormBase {
   }
 
 
+  confirm() {
+    this.controller.activateHotkey("Y")
+  }
+
+
   close() {
     this.controller.activateHotkey("{ESC}")
   }
