@@ -137,13 +137,19 @@ class StockMaintenanceForm extends FormBase {
       fields.push({ name: "replenish_multiple", className: "Edit12", description: "Enter replenish multiple for this receiving whse, this is only used in DRP" })
     }
 
-    if (formName == this.FORM_GTIN_FIND or formName == this.FORM_GTIN_ENTRY) {
+    if (formName == this.FORM_GTIN_FIND) {
+      fields.push({ name: "conv_factor", className: "", description: "Quantity this trade unit number represents" })
+      fields.push({ name: "uom", className: "", description: "Saleable unit description e.g. EACH,KG,MTR,... [HELP]" })
+      fields.push({ name: "gtin", className: "", description: "Enter Global Trade Item number or @ to generate a new GS1 number" })
+    }
+
+    if (formName == this.FORM_GTIN_ENTRY) {
       fields.push({ name: "gtin", className: "", description: "Enter Global Trade Item number or @ to generate a new GS1 number" })
     }
 
     if (formName == this.FORM_GTIN_CORRECT or formName == this.FORM_GTIN_ENTRY) {
       fields.push({ name: "uom", className: "", description: "Saleable unit description e.g. EACH,KG,MTR,... [HELP]" })
-      fields.push({ name: "conversion", className: "", description: "Quantity this trade unit number represents" })
+      fields.push({ name: "conv_factor", className: "", description: "Quantity this trade unit number represents" })
       fields.push({ name: "length", className: "", description: "Length of GTIN" })
       fields.push({ name: "width", className: "", description: "Width of GTIN" })
       fields.push({ name: "height", className: "", description: "Height of GTIN" })

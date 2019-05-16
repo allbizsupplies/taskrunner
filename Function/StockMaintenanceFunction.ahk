@@ -182,4 +182,20 @@ class StockMaintenanceFunction extends FunctionBase {
     this.controller.activateHotkey("{ESC}")
   }
 
+  deleteGtinRecord(record) {
+    this.findRecord(record)
+
+    ; Navigate to the correct supplier record
+    findForm := this.getForm(StockMaintenanceForm.FORM_GTIN_FIND)
+    findForm.open()
+    findForm.submit(record)
+
+    ; Remove the record
+    this.controller.activateHotkey("R")
+    this.controller.activateHotkey("N")
+    this.controller.activateHotkey("{Enter}")
+    this.controller.activateHotkey("Y")
+    this.controller.activateHotkey("{ESC}")
+  }
+
 }
