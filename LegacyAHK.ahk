@@ -4,6 +4,15 @@
 class AHK {
 
 
+  joinArgs(args) {
+    options := ""
+    for arg in args {
+      options := options . arg . "," 
+    }
+    return options
+  }
+
+
   controlGetText(classname, winTitle) {
     ControlGetText, text, %classname%, %winTitle%
     return text
