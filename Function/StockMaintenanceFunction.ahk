@@ -13,8 +13,8 @@ class StockMaintenanceFunction extends FunctionBase {
   static FUNC_PRICE := "P"
   
  
-  getForm(formName) {
-    return new StockMaintenanceForm(this, formName)
+  getForm(formName, record) {
+    return new StockMaintenanceForm(this, formName, record)
   }
 
 
@@ -22,12 +22,12 @@ class StockMaintenanceFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Navigate to the correct supplier record
-    findForm := this.getForm(StockMaintenanceForm.FORM_PRICE_FIND)
+    findForm := this.getForm(StockMaintenanceForm.FORM_PRICE_FIND, record)
     findForm.open()
     findForm.submit(record)
 
     ; Submit the corrections
-    correctForm := this.getForm(StockMaintenanceForm.FORM_PRICE_CORRECT)
+    correctForm := this.getForm(StockMaintenanceForm.FORM_PRICE_CORRECT, record)
     this.controller.activateHotkey("C")
     correctForm.submit(record)
     correctForm.close()
@@ -38,7 +38,7 @@ class StockMaintenanceFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Submit the corrections
-    correctForm := this.getForm(StockMaintenanceForm.FORM_CORRECT)
+    correctForm := this.getForm(StockMaintenanceForm.FORM_CORRECT, record)
     correctForm.open()
     correctForm.submit(record)
   }
@@ -48,12 +48,12 @@ class StockMaintenanceFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Navigate to the correct supplier record
-    findForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_FIND)
+    findForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_FIND, record)
     findForm.open()
     findForm.submit(record)
 
     ; Submit the corrections
-    correctForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_CORRECT)
+    correctForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_CORRECT, record)
     this.controller.activateHotkey("C")
     correctForm.submit(record)
     correctForm.close()
@@ -64,12 +64,12 @@ class StockMaintenanceFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Navigate to the correct gtin record
-    findForm := this.getForm(StockMaintenanceForm.FORM_GTIN_FIND)
+    findForm := this.getForm(StockMaintenanceForm.FORM_GTIN_FIND, record)
     findForm.open()
     findForm.submit(record)
 
     ; Submit the corrections
-    correctForm := this.getForm(StockMaintenanceForm.FORM_GTIN_CORRECT)
+    correctForm := this.getForm(StockMaintenanceForm.FORM_GTIN_CORRECT, record)
     this.controller.activateHotkey("C")
     correctForm.submit(record)
     correctForm.close()
@@ -80,12 +80,12 @@ class StockMaintenanceFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Navigate to the correct supplier record
-    findForm := this.getForm(StockMaintenanceForm.FORM_WAREHOUSE_FIND)
+    findForm := this.getForm(StockMaintenanceForm.FORM_WAREHOUSE_FIND, record)
     findForm.open()
     findForm.submit(record)
 
     ; Submit the corrections
-    correctForm := this.getForm(StockMaintenanceForm.FORM_WAREHOUSE_CORRECT)
+    correctForm := this.getForm(StockMaintenanceForm.FORM_WAREHOUSE_CORRECT, record)
     this.controller.activateHotkey("C")
     correctForm.submit(record)
     correctForm.close()
@@ -93,29 +93,29 @@ class StockMaintenanceFunction extends FunctionBase {
 
 
   createRecord(record) {
-    entryForm := this.getForm(StockMaintenanceForm.FORM_ENTRY)
+    entryForm := this.getForm(StockMaintenanceForm.FORM_ENTRY, record)
     entryForm.open()
     entryForm.submit(record)
 
-    supplierEntryForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_ENTRY)
+    supplierEntryForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_ENTRY, record)
     supplierEntryForm.submit(record)
     ; Close dialog for next supplier record.
     this.controller.cancelForm()
     this.controller.closeFunction()
 
-    priceEntryForm := this.getForm(StockMaintenanceForm.FORM_PRICE_ENTRY)
+    priceEntryForm := this.getForm(StockMaintenanceForm.FORM_PRICE_ENTRY, record)
     priceEntryForm.submit(record)
     ; Close dialog for next price record.
     this.controller.cancelForm()
     this.controller.closeFunction()
 
-    warehouseEntryForm := this.getForm(StockMaintenanceForm.FORM_WAREHOUSE_ENTRY)
+    warehouseEntryForm := this.getForm(StockMaintenanceForm.FORM_WAREHOUSE_ENTRY, record)
     warehouseEntryForm.submit(record)
     ; Close dialog for next warehouse record.
     this.controller.cancelForm()
     this.controller.closeFunction()
 
-    gtinEntryForm := this.getForm(StockMaintenanceForm.FORM_GTIN_ENTRY)
+    gtinEntryForm := this.getForm(StockMaintenanceForm.FORM_GTIN_ENTRY, record)
     gtinEntryForm.open()
     gtinEntryForm.submit(record)
     ; Close dialog for next gtin record.
@@ -130,7 +130,7 @@ class StockMaintenanceFunction extends FunctionBase {
   createSupplierRecord(record) {
     this.findRecord(record)
 
-    entryForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_ENTRY)
+    entryForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_ENTRY, record)
     entryForm.open()
     entryForm.submit(record)
     ; Close dialog for next supplier record.
@@ -142,7 +142,7 @@ class StockMaintenanceFunction extends FunctionBase {
   createGtinRecord(record) {
     this.findRecord(record)
 
-    gtinEntryForm := this.getForm(StockMaintenanceForm.FORM_GTIN_ENTRY)
+    gtinEntryForm := this.getForm(StockMaintenanceForm.FORM_GTIN_ENTRY, record)
     gtinEntryForm.open()
     gtinEntryForm.submit(record)
     ; Close dialog for next gtin record.
@@ -152,7 +152,7 @@ class StockMaintenanceFunction extends FunctionBase {
 
 
   findRecord(record) {
-    form := this.getForm(StockMaintenanceForm.FORM_FIND)
+    form := this.getForm(StockMaintenanceForm.FORM_FIND, record)
     form.open()
     form.submit(record)
   }
@@ -171,7 +171,7 @@ class StockMaintenanceFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Navigate to the correct price record.
-    findForm := this.getForm(StockMaintenanceForm.FORM_PRICE_FIND)
+    findForm := this.getForm(StockMaintenanceForm.FORM_PRICE_FIND, record)
     findForm.open()
     findForm.submit(record)
 
@@ -188,7 +188,7 @@ class StockMaintenanceFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Navigate to the correct supplier record
-    findForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_FIND)
+    findForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_FIND, record)
     findForm.open()
     findForm.submit(record)
 
@@ -202,7 +202,7 @@ class StockMaintenanceFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Navigate to the correct gtin record
-    findForm := this.getForm(StockMaintenanceForm.FORM_GTIN_FIND)
+    findForm := this.getForm(StockMaintenanceForm.FORM_GTIN_FIND, record)
     findForm.open()
     findForm.submit(record)
 

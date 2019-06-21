@@ -25,7 +25,7 @@ class StockMaintenanceForm extends FormBase {
   static FORM_WAREHOUSE_FIND := "WF"
   
 
-  getFields(formName) {
+  getFields(formName, record) {
     fields := {}
 
     if (formName == this.FORM_FIND or formName == this.FORM_ENTRY) {
@@ -110,7 +110,12 @@ class StockMaintenanceForm extends FormBase {
       fields.push({ name: "supp_item_code", className: "Edit2", description: "Enter supplier item code (Default finished goods warehouse if manufactured)" })
       fields.push({ name: "supp_priority", className: "Edit3", description: "Enter a value in the range 1 to 9 (1=High,9=Low)" })
       fields.push({ name: "supp_uom", className: "Edit4", description: "Enter the supplier/manufacture unit description" })
-      fields.push({ name: "supp_conv_factor", condition: ["Edit5", "1.0000000", "!="], className: "Edit5", description: "Conv. between supplier/manuf units and selling units" })
+
+      ; Only include the conversion factor if we are updating it.
+      ; This means that conv factor cannot be set when supp UOM == sell UOM.
+      if(record["supp_conv_factor"])
+        fields.push({ name: "supp_conv_factor", className: "Edit5", description: "Conv. between supplier/manuf units and selling units" })
+
       fields.push({ name: "supp_pack_qty", className: "Edit6", description: "Enter number of items in a pack" })
       fields.push({ name: "supp_eoq", className: "Edit7", description: "Enter the minimum amount to purchase at any time" })
       fields.push({ name: "supp_last_buy_date", className: "Edit8", description: "Enter the last date the goods were ordered" })
@@ -123,7 +128,7 @@ class StockMaintenanceForm extends FormBase {
     }
 
     if (formName == this.FORM_WAREHOUSE_FIND or formName == this.FORM_WAREHOUSE_ENTRY) {
-      fields.push({ name: "warehouse", className: "Edit1", description: "Enter the warehouse for this warehouse" })
+      fields.push({ name: "whse", className: "Edit1", description: "Enter the warehouse for this warehouse" })
     }
 
     if (formName == this.FORM_WAREHOUSE_CORRECT or formName == this.FORM_WAREHOUSE_ENTRY) {
@@ -145,6 +150,11 @@ class StockMaintenanceForm extends FormBase {
 
     if (formName == this.FORM_GTIN_ENTRY or formName == this.FORM_GTIN_CORRECT) {
       fields.push({ name: "gtin", className: "", description: "Enter Global Trade Item number or @ to generate a new GS1 number" })
+    }
+
+    if (formName == this.FORM_GTIN_ENTRY) {
+      fields.push({ name: "uom", className: "", description: "Saleable unit description e.g. EACH,KG,MTR,... [HELP]" })
+      fields.push({ name: "conv_factor", className: "", description: "Quantity this trade unit number represents" })
     }
 
     if (formName == this.FORM_GTIN_CORRECT) {

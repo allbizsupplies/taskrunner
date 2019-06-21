@@ -3,9 +3,12 @@
 class FormBase {
 
 
-  __new(fn, formName) {
+  static EMPTY_RECORD :=
+
+
+  __new(fn, formName, record) {
     this.controller := fn.controller
-    this.fields := this.getFields(formName)
+    this.fields := this.getFields(formName, record)
     this.hotkey := formName
   }
 
