@@ -31,9 +31,6 @@ class WebSortcodeFunction extends FunctionBase {
   updateRecord(record) {
     this.findRecord(record)
 
-    ; Assume we want this item to be seen online
-    record["web_active"] := "Y"
-
     form := this.getForm(this.FORM_CORRECT)
     form.open()
     form.submit(record)
