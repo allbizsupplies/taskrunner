@@ -13,8 +13,8 @@ class WebSortcodeFunction extends FunctionBase {
   static FORM_CORRECT := "C"
 
   
-  getForm(formName) {
-    return new WebSortcodeForm(this, formName)
+  getForm(formName, record) {
+    return new WebSortcodeForm(this, formName, record)
   }
 
 
@@ -31,14 +31,15 @@ class WebSortcodeFunction extends FunctionBase {
   updateRecord(record) {
     this.findRecord(record)
 
-    form := this.getForm(this.FORM_CORRECT)
+    form := this.getForm(this.FORM_CORRECT, record)
     form.open()
     form.submit(record)
   }
 
 
   findRecord(record) {
-    form := this.getForm(this.FORM_FIND)
+    form := this.getForm(this.FORM_FIND, record)
+
     form.open()
     form.submit(record)
   }
