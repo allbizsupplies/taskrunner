@@ -113,7 +113,7 @@ class StockMaintenanceForm extends FormBase {
 
       ; Only include the conversion factor if we are updating it.
       ; This means that conv factor cannot be set when supp UOM == sell UOM.
-      if(record["supp_conv_factor"])
+      if(record["supp_conv_factor"] != "" && record["supp_conv_factor"] > 1)
         fields.push({ name: "supp_conv_factor", className: "Edit5", description: "Conv. between supplier/manuf units and selling units" })
 
       fields.push({ name: "supp_pack_qty", className: "Edit6", description: "Enter number of items in a pack" })
