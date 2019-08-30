@@ -140,7 +140,6 @@ class TaskRunner {
   }
 
 
-
   stock_transfer(args) {
     operation := args[1] . "StockTransfer"
     inputFile := args[2]
