@@ -132,14 +132,15 @@ class StockMaintenanceForm extends FormBase {
     }
 
     if (formName == this.FORM_WAREHOUSE_CORRECT or formName == this.FORM_WAREHOUSE_ENTRY) {
-      fields.push({ name: "bin_loc", className: "Edit3", description: "Enter the picking bin location" })
-      fields.push({ name: "bulk_loc", className: "Edit4", description: "Enter bulk location code (if any)" })
+      fields.push({ name: "bin_loc", description: "Enter the picking bin location" })
+      fields.push({ name: "bulk_loc", description: "Enter bulk location code (if any)" })
       fields.push({ name: "average_cost", condition: ["Static10", "0.000", "="], className: "Edit7", description: "Please enter warehouse average cost" })
-      fields.push({ name: "minimum", className: "Edit8", description: "Enter the stock level at which reordering should be done" })
-      fields.push({ name: "maximum", className: "Edit9", description: "Enter maximum amount of stock to be stored in warehouse" })
-      fields.push({ name: "min_cover", className: "Edit10", description: "Enter minimum number of days to cover with this warehouse" })
-      fields.push({ name: "max_cover", className: "Edit11", description: "Enter maximum number of days to cover with this warehouse" })
-      fields.push({ name: "replenish_multiple", className: "Edit12", description: "Enter replenish multiple for this receiving whse, this is only used in DRP" })
+      fields.push({ name: "minimum", description: "Enter the stock level at which reordering should be done" })
+      fields.push({ name: "maximum", description: "Enter maximum amount of stock to be stored in warehouse" })
+      fields.push({ name: "min_cover", description: "Enter minimum number of days to cover with this warehouse" })
+      fields.push({ name: "max_cover", description: "Enter maximum number of days to cover with this warehouse" })
+      fields.push({ name: "months_active", description: "Enter number of months this item has been active" })
+      fields.push({ name: "replenish_multiple", description: "Enter replenish multiple for this receiving whse, this is only used in DRP" })
     }
 
     if (formName == this.FORM_GTIN_FIND) {
