@@ -131,6 +131,16 @@ class TaskRunner {
   }
 
 
+  price_rule(args) {
+    operation := args[1] . "Record"
+    inputFile := args[2]
+    dataReader := new DataReader(inputFile)
+    function := new PriceRuleFunction(this.controller)
+    this.run(function, operation, dataReader.data)
+  }
+
+
+
   stock_transfer(args) {
     operation := args[1] . "StockTransfer"
     inputFile := args[2]
