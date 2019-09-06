@@ -4,6 +4,7 @@
 #include Function/ContractFunction.ahk
 #include Function/InvBulkMaintenanceFunction.ahk
 #include Function/PriceRecalcFunction.ahk
+#include Function/PriceRuleFunction.ahk
 #include Function/ShelfTicketsFunction.ahk
 #include Function/StockAdjustmentFunction.ahk
 #include Function/StockMaintenanceFunction.ahk
