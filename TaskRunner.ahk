@@ -2,6 +2,7 @@
 #include DataReader.ahk
 #include ThinClientController.ahk
 #include Function/ContractFunction.ahk
+#include Function/ContractMaintenanceFunction.ahk
 #include Function/InvBulkMaintenanceFunction.ahk
 #include Function/PriceRecalcFunction.ahk
 #include Function/PriceRuleFunction.ahk
@@ -35,6 +36,15 @@ class TaskRunner {
     for index, item in dataReader.data {
       function.createAdjustment(item)
     }
+  }
+
+
+  contract(args) {
+    operation := args[1] . "Record"
+    inputFile := args[2]
+    dataReader := new DataReader(inputFile)
+    function := new ContractMaintenanceFunction(this.controller)
+    this.run(function, operation, dataReader.data)
   }
 
 
