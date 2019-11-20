@@ -20,6 +20,13 @@ class PriceRuleFunction extends FunctionBase {
   }
 
 
+  createRecord(record) {
+    form := this.getForm(PriceRuleForm.FORM_ENTRY, record)
+    form.open()
+    form.submit(record)
+  }
+
+
   updateRecord(record) {
     this.findRecord(record)
 

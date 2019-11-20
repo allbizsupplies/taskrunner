@@ -8,6 +8,7 @@ class PriceRuleForm extends FormBase {
   ; Hotkeys for forms.
   static FORM_FIND := "F"
   static FORM_CORRECT := "C"
+  static FORM_ENTRY := "C"
 
 
   getFields(formName) {
@@ -17,7 +18,7 @@ class PriceRuleForm extends FormBase {
       fields.push({ name: "price_rule", description: "Price type code" })
     }
 
-    if (formName == this.FORM_CORRECT) {
+    if (formName == this.FORM_CORRECT || formName == this.FORM_ENTRY) {
       loop, 7
       {
         index := a_index - 1
