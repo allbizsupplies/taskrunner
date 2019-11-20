@@ -164,10 +164,10 @@ class StockMaintenanceForm extends FormBase {
     }
 
     if (formName == this.FORM_GTIN_CORRECT or formName == this.FORM_GTIN_ENTRY) {
-      fields.push({ name: "length", className: "", description: "Length of GTIN" })
-      fields.push({ name: "width", className: "", description: "Width of GTIN" })
-      fields.push({ name: "height", className: "", description: "Height of GTIN" })
-      fields.push({ name: "weight", className: "", description: "Weight of GTIN" })
+      fields.push({ name: "length", className: "", description: "Enter the length in metres" })
+      fields.push({ name: "width", className: "", description: "Enter the width in metres" })
+      fields.push({ name: "height", className: "", description: "Enter the height in metres" })
+      fields.push({ name: "weight", className: "", description: "Enter the weight in KG" })
       fields.push({ name: "own_box", className: "", description: "Does this item use its own box.  Any value in this field means YES. (ScanPack)" })
       fields.push({ name: "publish", className: "", description: "Is this GTIN to be published?" })
     }
