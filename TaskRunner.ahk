@@ -63,12 +63,22 @@ class TaskRunner {
   }
 
 
+  ci(args) {
+    this.contract_item(args)
+  }
+
+
   product(args) {
     operation := args[1] . "Record"
     inputFile := args[2]
     dataReader := new DataReader(inputFile)
     function := new StockMaintenanceFunction(this.controller)
     this.run(function, operation, dataReader.data)
+  }
+
+
+  p(args) {
+    this.product(args)
   }
 
 
@@ -82,6 +92,11 @@ class TaskRunner {
   }
 
 
+  pg(args) {
+    this.product_group(args)
+  }
+
+
   product_gtin(args) {
     op := args[1]
     operation := args[1] . "GtinRecord"
@@ -89,6 +104,11 @@ class TaskRunner {
     dataReader := new DataReader(inputFile)
     function := new StockMaintenanceFunction(this.controller)
     this.run(function, operation, dataReader.data)
+  }
+
+
+  pgtin(args) {
+    this.product_gtin(args)
   }
 
 
@@ -102,12 +122,22 @@ class TaskRunner {
   }
 
 
+  pp(args) {
+    this.product_price(args)
+  }
+
+
   product_supplier(args) {
     operation := args[1] . "SupplierRecord"
     inputFile := args[2]
     dataReader := new DataReader(inputFile)
     function := new StockMaintenanceFunction(this.controller)
     this.run(function, operation, dataReader.data)
+  }
+
+
+  ps(args) {
+    this.product_supplier(args)
   }
 
 
@@ -120,12 +150,22 @@ class TaskRunner {
   }
 
 
+  pw(args) {
+    this.product_warehouse(args)
+  }
+
+
   product_web_sortcode(args) {
     operation := args[1] . "Record"
     inputFile := args[2]
     dataReader := new DataReader(inputFile)
     function := new WebSortcodeFunction(this.controller)
     this.run(function, operation, dataReader.data)
+  }
+
+
+  pws(args) {
+    this.product_web_sortcode(args)
   }
 
 

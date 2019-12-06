@@ -22,5 +22,20 @@ class FunctionBase {
   close() {
     this.controller.closeFunction()
   }
+
+
+  cRecord(record) {
+    this.createRecord(record)
+  }
+
+
+  dRecord(record) {
+    this.deleteRecord(record)
+  }
+
+
+  uRecord(record) {
+    this.updateRecord(record)
+  }
   
 }
