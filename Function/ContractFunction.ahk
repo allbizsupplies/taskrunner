@@ -9,13 +9,13 @@ class ContractFunction extends FunctionBase {
   
  
   getForm(formName) {
-    return new ContractForm(this, formName)
+    return new ContractForm(this, formName, record)
   }
 
 
   createRecord(record) {
     ; Add the product to the contract.
-    entryForm := this.getForm(ContractForm.FORM_ENTER_PRODUCT)
+    entryForm := this.getForm(ContractForm.FORM_ENTER_PRODUCT, record)
     entryForm.open()
     entryForm.submit(record)
     entryForm.close()
@@ -29,14 +29,14 @@ class ContractFunction extends FunctionBase {
     this.findRecord(record)
 
     ; Submit the corrections.
-    correctForm := this.getForm(ContractForm.FORM_DETAIL)
+    correctForm := this.getForm(ContractForm.FORM_DETAIL, record)
     correctForm.open()
     correctForm.submit(record)
   }
 
 
   findRecord(record) {
-    form := this.getForm(ContractForm.FORM_FIND_PRODUCT)
+    form := this.getForm(ContractForm.FORM_FIND_PRODUCT, record)
     form.open()
     form.submit(record)
   }
@@ -44,7 +44,7 @@ class ContractFunction extends FunctionBase {
 
   ; Opens the Function in the thin client.
   openContract(record) {
-    form := this.getForm(ContractForm.FORM_OPEN_CONTRACT)
+    form := this.getForm(ContractForm.FORM_OPEN_CONTRACT, record)
     form.submit(record)
   }
 

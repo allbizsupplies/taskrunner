@@ -12,10 +12,10 @@ class ContractForm extends FormBase {
   static FORM_DETAIL := "D"
 
 
-  getFields(formName) {
+  getFields(formName, record) {
     fields := {}
 
-    if (formName == this.FORM_OPEN_CONTRACT) {
+    if (formName == this.FORM_OPEN_CONTRACT) {      
       fields.push({ name: "contract", description: "Please enter the required contract number" })
       ; fields.push({ name: "cust_type", description: "Please enter the customer type to base price default" })
     }
