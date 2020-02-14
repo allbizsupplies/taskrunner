@@ -60,6 +60,23 @@ class StockMaintenanceFunction extends FunctionBase {
   }
 
 
+  updateSupplierRecordHeaderOnly(record) {
+    this.findRecord(record)
+
+    ; Navigate to the correct supplier record
+    findForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_FIND, record)
+    findForm.open()
+    findForm.submit(record)
+
+    ; Submit the corrections
+    correctForm := this.getForm(StockMaintenanceForm.FORM_SUPPLIER_HEADER_CORRECT, record)
+    this.controller.activateHotkey("C")
+    correctForm.submit(record)
+    this.controller.activateHotkey("{F4}")
+    correctForm.close()
+  }
+
+
   updateGtinRecord(record) {
     this.findRecord(record)
 

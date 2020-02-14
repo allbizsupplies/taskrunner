@@ -12,6 +12,7 @@
 #include Function/WebSortcodeFunction.ahk
 
 
+
 class TaskRunner {
   
 
@@ -129,6 +130,18 @@ class TaskRunner {
 
   product_supplier(args) {
     operation := args[1] . "SupplierRecord"
+    inputFile := args[2]
+    dataReader := new DataReader(inputFile)
+    function := new StockMaintenanceFunction(this.controller)
+    this.run(function, operation, dataReader.data)
+  }
+
+
+  product_supplier_header(args) {
+    if (args[1] != "update") {
+      throw { what: "Only update is supported for supplier_header", file: A_LineFile, line: A_LineNumber }
+    }
+    operation := "updateSupplierRecordHeaderOnly"
     inputFile := args[2]
     dataReader := new DataReader(inputFile)
     function := new StockMaintenanceFunction(this.controller)

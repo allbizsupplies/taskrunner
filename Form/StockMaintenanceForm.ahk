@@ -17,6 +17,7 @@ class StockMaintenanceForm extends FormBase {
   static FORM_PRICE_ENTRY := "PE"
   static FORM_PRICE_FIND := "PF"
   static FORM_SUPPLIER_CORRECT := "SC"
+  static FORM_SUPPLIER_HEADER_CORRECT := "SHC"
   static FORM_SUPPLIER_ENTRY := "SE"
   static FORM_SUPPLIER_FIND := "SF"
   static FORM_WAREHOUSE_STOCK_ADJUST := "WA"
@@ -106,9 +107,12 @@ class StockMaintenanceForm extends FormBase {
       fields.push({ name: "supplier", className: "Edit1", description: "Enter supplier name (or warehouse if manufactured/distributed)" })
     }
 
-    if (formName == this.FORM_SUPPLIER_CORRECT or formName == this.FORM_SUPPLIER_ENTRY) {
+    if (formName == this.FORM_SUPPLIER_CORRECT or formName == this.FORM_SUPPLIER_HEADER_CORRECT or formName == this.FORM_SUPPLIER_ENTRY) {
       fields.push({ name: "supp_item_code", className: "Edit2", description: "Enter supplier item code (Default finished goods warehouse if manufactured)" })
       fields.push({ name: "supp_priority", className: "Edit3", description: "Enter a value in the range 1 to 9 (1=High,9=Low)" })
+    }
+
+    if (formName == this.FORM_SUPPLIER_CORRECT or formName == this.FORM_SUPPLIER_ENTRY) {
       fields.push({ name: "supp_uom", className: "Edit4", description: "Enter the supplier/manufacture unit description" })
 
       ; Only include the conversion factor if we are updating it.
