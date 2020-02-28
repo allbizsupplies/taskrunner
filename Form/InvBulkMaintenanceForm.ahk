@@ -10,9 +10,9 @@ class InvBulkMaintenanceForm extends FormBase {
   static FORM_UPDATE_GROUP := "G"
 
 
-  __new(fn, formName) {
-    base.__new(fn, formName)
-    this.selectionFields := this.getSelectionFields(formName)
+  __new(fn, formName, record) {
+    base.__new(fn, formName, record)
+    this.selectionFields := this.getSelectionFields(formName, record)
   }
 
 

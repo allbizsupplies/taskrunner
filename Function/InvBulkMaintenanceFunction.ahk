@@ -9,12 +9,12 @@ class InvBulkMaintenanceFunction extends FunctionBase {
   
  
   getForm(formName) {
-    return new InvBulkMaintenanceForm(this, formName)
+    return new InvBulkMaintenanceForm(this, formName, record)
   }
 
 
   updateGroup(record) {
-    form := this.getForm(InvBulkMaintenanceForm.FORM_UPDATE_GROUP)
+    form := this.getForm(InvBulkMaintenanceForm.FORM_UPDATE_GROUP, record)
     form.open()
     form.submit(record)
   }
