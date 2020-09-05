@@ -8,11 +8,6 @@ class WebSortcodeFunction extends FunctionBase {
   id := "" ; @todo figure out how to launch this function
 
 
-  ; Hotkeys for forms.
-  static FORM_FIND := "F"
-  static FORM_CORRECT := "C"
-
-  
   getForm(formName, record) {
     return new WebSortcodeForm(this, formName, record)
   }
@@ -31,14 +26,35 @@ class WebSortcodeFunction extends FunctionBase {
   updateRecord(record) {
     this.findRecord(record)
 
-    form := this.getForm(this.FORM_CORRECT, record)
+    form := this.getForm(WebSortcodeForm.FORM_CORRECT, record)
     form.open()
     form.submit(record)
   }
 
 
+  updateBulletPointsRecord(record) {
+    this.findRecord(record)
+
+    ; Clear the existing bullet points
+    this.controller.activateHotkey("B")
+    loop, 20 
+    {
+      this.controller.activateHotkey("R")
+      this.controller.activateHotkey("Y")
+    }
+
+    ; Insert the new bullet points
+    entryForm := this.getForm(WebSortcodeForm.FORM_BULLET_POINTS_ENTRY, record)
+    entryForm.open()
+    entryForm.submit(record)
+    ; Close line for next gtin record.
+    entryForm.close()
+    this.controller.closeFunction()
+  }
+
+
   findRecord(record) {
-    form := this.getForm(this.FORM_FIND, record)
+    form := this.getForm(WebSortcodeForm.FORM_FIND, record)
 
     form.open()
     form.submit(record)
