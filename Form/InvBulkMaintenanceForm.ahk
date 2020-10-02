@@ -16,7 +16,7 @@ class InvBulkMaintenanceForm extends FormBase {
   }
 
 
-  getSelectionFields(formName) {
+  getSelectionFields(formName, record) {
     fields := {}
 
     if (formName == this.FORM_UPDATE_GROUP) {
