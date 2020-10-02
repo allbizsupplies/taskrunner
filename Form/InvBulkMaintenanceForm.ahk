@@ -21,32 +21,32 @@ class InvBulkMaintenanceForm extends FormBase {
 
     if (formName == this.FORM_UPDATE_GROUP) {
       ; Fields for item code range.
-      fields.push({ name: "start_item_code", description: "Enter item code to start the report with" })
-      fields.push({ name: "end_item_code", description: "Enter item code to end the report with" })
+      fields.push({ name: "item_code", description: "Enter item code to start the report with" })
+      fields.push({ name: "item_code", description: "Enter item code to end the report with" })
 
       ; Fields for group range.
-      fields.push({ name: "start_group", description: "Enter item group to start the report with. [HELP]" })
-      fields.push({ name: "end_group", description: "Enter item group to end the report with. [HELP]" })
+      fields.push({ name: "group", description: "Enter item group to start the report with. [HELP]" })
+      fields.push({ name: "group", description: "Enter item group to end the report with. [HELP]" })
 
       ; Fields for brand range.
-      fields.push({ name: "start_brand", description: "Enter item brand to start the report with. [HELP]" })
-      fields.push({ name: "end_brand", description: "Enter item brand to end the report with. [HELP]" })
+      fields.push({ name: "brand", description: "Enter item brand to start the report with. [HELP]" })
+      fields.push({ name: "brand", description: "Enter item brand to end the report with. [HELP]" })
 
       ; Fields for item type range.
-      fields.push({ name: "start_item_type", description: "Enter the item type to start at. [HELP]." })
-      fields.push({ name: "end_item_type", description: "Enter the item type to end at." })
+      fields.push({ name: "item_type", description: "Enter the item type to start at. [HELP]." })
+      fields.push({ name: "item_type", description: "Enter the item type to end at." })
 
       ; Fields for condition.
-      fields.push({ name: "start_condition", description: "Enter the condition to start at. [HELP]." })
-      fields.push({ name: "end_condition", description: "Enter the condition to end at." })
+      fields.push({ name: "condition", description: "Enter the condition to start at. [HELP]." })
+      fields.push({ name: "condition", description: "Enter the condition to end at." })
 
       ; Fields for sales type.
-      fields.push({ name: "start_sales_type", description: "Enter start sales type" })
-      fields.push({ name: "end_sales_type", description: "Enter end sales type" })
+      fields.push({ name: "sales_type", description: "Enter start sales type" })
+      fields.push({ name: "sales_type", description: "Enter end sales type" })
 
       ; Fields for GTIN.
-      fields.push({ name: "start_gtin", description: "Enter GTIN to start the report with" })
-      fields.push({ name: "end_gtin", description: "Enter GTIN to end the report with" })
+      fields.push({ name: "gtin", description: "Enter GTIN to start the report with" })
+      fields.push({ name: "gtin", description: "Enter GTIN to end the report with" })
 
       ; Field for ABC class.
       fields.push({ name: "abc_class", description: "Enter a Item Class Code, <spaces> for all [HELP]" })
