@@ -156,6 +156,18 @@ class StockMaintenanceFunction extends FunctionBase {
   }
 
 
+  createPriceRecord(record) {
+    this.findRecord(record)
+
+    priceEntryForm := this.getForm(StockMaintenanceForm.FORM_PRICE_ENTRY, record)
+    priceEntryForm.open()
+    priceEntryForm.submit(record)
+    ; Close dialog for next gtin record.
+    priceEntryForm.close()
+    this.controller.closeFunction()
+  }
+
+
   createGtinRecord(record) {
     this.findRecord(record)
 
