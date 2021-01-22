@@ -178,6 +178,15 @@ class TaskRunner {
   }
 
 
+  product_bullet_points(args) {
+    operation := args[1] . "BulletPointsRecord"
+    inputFile := args[2]
+    dataReader := new DataReader(inputFile)
+    function := new WebSortcodeFunction(this.controller)
+    this.run(function, operation, dataReader.data)
+  }
+
+
   pws(args) {
     this.product_web_sortcode(args)
   }
