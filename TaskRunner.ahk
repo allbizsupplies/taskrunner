@@ -1,6 +1,7 @@
 #include %A_Scriptdir% ; Set includes directory
 #include DataReader.ahk
 #include ThinClientController.ahk
+#include Function/CancelOrderFunction.ahk
 #include Function/ContractFunction.ahk
 #include Function/ContractMaintenanceFunction.ahk
 #include Function/InvBulkMaintenanceFunction.ahk
@@ -201,6 +202,22 @@ class TaskRunner {
     dataReader := new DataReader(inputFile)
     function := new PriceRuleFunction(this.controller)
     this.run(function, operation, dataReader.data)
+  }
+
+
+  sales_order(args) {
+    if (args[1] == "cancel") {
+      inputFile := args[2]
+      dataReader := new DataReader(inputFile)
+      function := new CancelOrderFunction(this.controller)
+      function.open()
+      this.controller.waitClientStatus("Please enter the required sales order")
+      for index, item in dataReader.data {
+        openFindForm := index > 1
+        function.cancelRecord(item, openFindForm)
+      }
+      function.close()
+    }
   }
 
 
