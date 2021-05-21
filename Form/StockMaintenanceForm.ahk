@@ -72,7 +72,9 @@ class StockMaintenanceForm extends FormBase {
       fields.push({ name: "repl_cost", className: "", description: "Enter the replacement cost for this item" })
       fields.push({ name: "sales_cost", className: "", description: "Enter the sales stock cost for this item" })
       fields.push({ name: "excise_qty", className: "", description: "Enter excise quantity" })
-      fields.push({ name: "bom", condition: [item_type_className, "K", "="], className: "", description: "Enter the BOM ID to use to cost this inventory item" })
+      if (record["item_type"] == "K") {
+        fields.push({ name: "bom", className: "", description: "Enter the BOM ID to use to cost this inventory item" })
+      }
       fields.push({ name: "reorder_policy", className: "", description: "Stock Reorder Report Policy, does not affect MRP. See [HELP]" })
       fields.push({ name: "planning_policy", className: "", description: "Planning Policy : used by the MRP System only. See [HELP]" })
       fields.push({ name: "buyer_code", className: "", description: "Enter the reorder buyer code. (see help)" })
