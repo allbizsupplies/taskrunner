@@ -11,7 +11,7 @@
 #include Function/StockAdjustmentFunction.ahk
 #include Function/StockMaintenanceFunction.ahk
 #include Function/WebSortcodeFunction.ahk
-
+#include Function/WebStockcodeReviewFunction.ahk
 
 
 class TaskRunner {
@@ -249,6 +249,15 @@ class TaskRunner {
       function.enterTicketItemCode(item)
     }
     function.close()
+  }
+
+
+  web_stockcode_review(args) {
+    operation := "updateRecord"
+    inputFile := args[1]
+    dataReader := new DataReader(inputFile)
+    function := new WebStockcodeReviewFunction(this.controller)
+    this.run(function, operation, dataReader.data)
   }
 
 
