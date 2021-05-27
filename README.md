@@ -51,3 +51,22 @@ Required function: SO.M025 (Sales Orders > Cancel Orders)
 | :---------- | :------- | :------------------------------------------------------------ |
 | `order_no`  | Required | The sales order number without any alphabetical suffix.       |
 | `bo_suffix` | Optional | The alphabetical suffix for the sales order number, or blank. |
+
+### price_recalc
+
+Do a price recalc for ranges of products
+
+Required function: INV.M184 (Inventory > Prices Control > Recalculate Prices)
+
+#### Data Layout
+
+| Column name         | Required | Description                                                                 |
+| :------------------ | :------- | :-------------------------------------------------------------------------- |
+| `start_item_code`   | Required | The start item code                                                         |
+| `end_item_code`     | Required | The end item code                                                           |
+| `start_group`       | Optional | The start item group                                                        |
+| `end_group`         | Optional | The end item group                                                          |
+| `start_price_group` | Optional | The start price group ("Price Algor" in the Inventory Maintenance function) |
+| `end_price_group`   | Optional | The end price group ("Price Algor" in the Inventory Maintenance function)   |
+| `start_region`      | Optional | The start price region                                                      |
+| `end_region`        | Optional | The end price region                                                        |
