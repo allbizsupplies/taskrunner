@@ -18,17 +18,36 @@ Usage
 Commands
 --------
 
+### create_stock_adjustment
+
+Adjust stock quantities.
+
+Command example: `pronto_task.exe create_stock_adjustment yourcsvfile.csv`
+
+Required function: INV.T011 (Inventory > Inventory Transactions ? Adjust Item Levels)
+
+#### Data Layout
+
+| Column name | Required | Description                                                                                 |
+| :---------- | :------- | :------------------------------------------------------------------------------------------ |
+| `item_code` | Required | The item code.                                                                              |
+| `uom`       | Optional | The unit of measure to use for this adjustment. Leave blank to use the item's default UOM.  |
+| `whs`       | Required | The warehouse to use for this adjustment. Leave blank to use the items's default warehouse. |
+| `reference` | Optional | A brief note (max 12 characters) for the adjustment.                                        |
+| `reason`    | Required | A valid reason code to categorise this stock adjustment (e.g. `01` for stock take)          |
+| `qty`       | Required | The quantity to adjust. Use a negative quantity to reduce stock                             |
+
 ### cancel_sales_orders
 
 Cancel sales orders in bulk.
 
-Command example: `pronto_task.exe caancel_sales_order yourcsvfile.csv`
+Command example: `pronto_task.exe cancel_sales_order yourcsvfile.csv`
 
 Required function: SO.M025 (Sales Orders > Cancel Orders)
 
-#### data layout
+#### Data Layout
 
-| Column name | Required | Description                                                  |
-| :---------- | :------- | :----------------------------------------------------------- |
-| `order_no`  | Required | the sales order number without any alphabetical suffix       |
-| `bo_suffix` | Optional | the alphabetical suffix for the sales order number, or blank |
+| Column name | Required | Description                                                   |
+| :---------- | :------- | :------------------------------------------------------------ |
+| `order_no`  | Required | The sales order number without any alphabetical suffix.       |
+| `bo_suffix` | Optional | The alphabetical suffix for the sales order number, or blank. |
