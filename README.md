@@ -6,7 +6,7 @@ This app automates the process of entering data in the Pronto Xi Thin Client.
 Installation
 ------------
 
-1. Download **task.exe**.
+1. Download **pronto_task.exe**.
 2. Optionally, add this file's location to your `Path` environment variable.
 
 Usage
@@ -31,4 +31,4 @@ Create a tab-delimited CSV file with the following columns:
 | `order_no`  | Required | the sales order number without any alphabetical suffix       |
 | `bo_suffix` | Optional | the alphabetical suffix for the sales order number, or blank |
 
-Run this command: `task.exe sales_order cancel yourcsvfile.csv`.
+Run this command: `pronto_task.exe sales_order cancel yourcsvfile.csv`.
