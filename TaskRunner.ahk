@@ -214,19 +214,17 @@ class TaskRunner {
   }
 
 
-  sales_order(args) {
-    if (args[1] == "cancel") {
-      inputFile := args[2]
-      dataReader := new DataReader(inputFile)
-      function := new CancelOrderFunction(this.controller)
-      function.open()
-      this.controller.waitClientStatus("Please enter the required sales order")
-      for index, item in dataReader.data {
-        openFindForm := index > 1
-        function.cancelRecord(item, openFindForm)
-      }
-      function.close()
+  cancel_sales_order(args) {
+    inputFile := args[1]
+    dataReader := new DataReader(inputFile)
+    function := new CancelOrderFunction(this.controller)
+    function.open()
+    this.controller.waitClientStatus("Please enter the required sales order")
+    for index, item in dataReader.data {
+      openFindForm := index > 1
+      function.cancelRecord(item, openFindForm)
     }
+    function.close()
   }
 
 
