@@ -30,187 +30,19 @@ class TaskRunner {
   }
 
 
-  adjustment(args) {
-    inputFile := args[1]
+  doOperation(function_class, operation, inputfile) {
     dataReader := new DataReader(inputFile)
-    function := new StockAdjustmentFunction(this.controller)
+    function := new function_class(this.controller)
     function.open()
     for index, item in dataReader.data {
-      function.createAdjustment(item)
-    }
-  }
-
-
-  contract(args) {
-    operation := args[1] . "Record"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new ContractMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  contract_item(args) {
-    operation := args[1] . "Record"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new ContractFunction(this.controller)
-    function.open()
-    for index, item in dataReader.data {
-      function.open()
-      function.openContract(item)
       function[operation](item)
-      function.close()
     }
   }
 
 
-  ci(args) {
-    this.contract_item(args)
-  }
-
-
-  product(args) {
-    operation := args[1] . "Record"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new StockMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  p(args) {
-    this.product(args)
-  }
-
-
-  product_group(args) {
-    op := args[1]
-    operation := args[1] . "Group"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new InvBulkMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  pg(args) {
-    this.product_group(args)
-  }
-
-
-  product_gtin(args) {
-    op := args[1]
-    operation := args[1] . "GtinRecord"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new StockMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  pgtin(args) {
-    this.product_gtin(args)
-  }
-
-
-  product_price(args) {
-    op := args[1]
-    operation := args[1] . "PriceRecord"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new StockMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  pp(args) {
-    this.product_price(args)
-  }
-
-
-  product_supplier(args) {
-    operation := args[1] . "SupplierRecord"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new StockMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  product_supplier_header(args) {
-    if (args[1] != "update") {
-      throw { what: "Only update is supported for supplier_header", file: A_LineFile, line: A_LineNumber }
-    }
-    operation := "updateSupplierRecordHeaderOnly"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new StockMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  ps(args) {
-    this.product_supplier(args)
-  }
-
-
-  product_warehouse(args) {
-    operation := args[1] . "WarehouseRecord"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new StockMaintenanceFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  pw(args) {
-    this.product_warehouse(args)
-  }
-
-
-  product_web_sortcode(args) {
-    operation := args[1] . "Record"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new WebSortcodeFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  product_bullet_points(args) {
-    operation := args[1] . "BulletPointsRecord"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new WebSortcodeFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  pws(args) {
-    this.product_web_sortcode(args)
-  }
-
-
-  price_recalc(args) {
+  create_stock_adjustment(args) {
     inputFile := args[1]
-    dataReader := new DataReader(inputFile)
-    function := new PriceRecalcFunction(this.controller)
-
-    for index, item in dataReader.data {
-      function.open()
-      function.runRecalc(item)
-      function.close()
-    }
-  }
-
-
-  price_rule(args) {
-    operation := args[1] . "Record"
-    inputFile := args[2]
-    dataReader := new DataReader(inputFile)
-    function := new PriceRuleFunction(this.controller)
-    this.run(function, operation, dataReader.data)
+    this.doOperation(StockAdjustmentFunction, "createAdjustment", inputFile)
   }
 
 
@@ -228,34 +60,96 @@ class TaskRunner {
   }
 
 
-  stock_transfer(args) {
-    operation := args[1] . "StockTransfer"
+  price_recalc(args) {
+    inputFile := args[1]
+    dataReader := new DataReader(inputFile)
+    function := new PriceRecalcFunction(this.controller)
+
+    for index, item in dataReader.data {
+      function.open()
+      function.runRecalc(item)
+      function.close()
+    }
+  }
+
+
+  update_contract(args) {
+    inputFile := args[1]
+    this.doOperation(ContractMaintenanceFunction, "updateRecord", inputFile)
+  }
+
+
+  update_contract_item(args) {
     inputFile := args[2]
     dataReader := new DataReader(inputFile)
-    function := new StockTransferFunction(this.controller)
-    this.run(function, operation, dataReader.data)
-  }
-
-
-  tickets(args) {
-    inputFile := args[1]
-    dataReader := new DataReader(inputFile)
-    function := new ShelfTicketsFunction(this.controller)
+    function := new ContractFunction(this.controller)
     function.open()
-    function.prepareRapidEntry()
     for index, item in dataReader.data {
-      function.enterTicketItemCode(item)
+      function.open()
+      function.openContract(item)
+      function["updateRecord"](item)
+      function.close()
     }
-    function.close()
   }
 
 
-  web_stockcode_review(args) {
-    operation := "updateRecord"
+  update_product(args) {
     inputFile := args[1]
-    dataReader := new DataReader(inputFile)
-    function := new WebStockcodeReviewFunction(this.controller)
-    this.run(function, operation, dataReader.data)
+    this.doOperation(StockMaintenanceFunction, "updateRecord", inputFile)
+  }
+
+
+  update_product_group(args) {
+    inputFile := args[1]
+    this.doOperation(InvBulkMaintenanceFunction, "updateGroup", inputFile)
+  }
+
+
+  update_product_gtin(args) {
+    inputFile := args[1]
+    this.doOperation(StockMaintenanceFunction, "updateGtinRecord", inputFile)
+  }
+
+
+  update_product_price(args) {
+    inputFile := args[1]
+    this.doOperation(StockMaintenanceFunction, "updatePriceRecord", inputFile)
+  }
+
+
+  update_product_supplier(args) {
+    inputFile := args[1]
+    this.doOperation(StockMaintenanceFunction, "updateSupplierRecord", inputFile)
+  }
+
+
+  update_product_supplier_header(args) {
+    inputFile := args[1]
+    this.doOperation(StockMaintenanceFunction, "updateSupplierRecordHeaderOnly", inputFile)
+  }
+
+
+  update_product_warehouse(args) {
+    inputFile := args[1]
+    this.doOperation(StockMaintenanceFunction, "updateWarehouseRecord", inputFile)
+  }
+
+
+  update_price_rule(args) {
+    inputFile := args[1]
+    this.doOperation(PriceRuleFunction, "updateRecord", inputFile)
+  }
+
+
+  transfer_stock(args) {
+    inputFile := args[1]
+    this.doOperation(StockTransferFunction, "createStockTransfer", inputFile)
+  }
+
+
+  update_web_data(args) {
+    inputFile := args[1]
+    this.doOperation(WebStockcodeReviewFunction, "updateRecord", inputFile)
   }
 
 
