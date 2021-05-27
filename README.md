@@ -22,15 +22,13 @@ Commands
 
 Cancel sales orders in bulk.
 
-Function: **SO.M025** Sales Orders > Cancel Orders
+Command example: `pronto_task.exe caancel_sales_order yourcsvfile.csv`
 
-#### Usage
+Required function: SO.M025 (Sales Orders > Cancel Orders)
 
-Create a tab-delimited CSV file with the following columns:
+#### data layout
 
 | Column name | Required | Description                                                  |
 | :---------- | :------- | :----------------------------------------------------------- |
 | `order_no`  | Required | the sales order number without any alphabetical suffix       |
 | `bo_suffix` | Optional | the alphabetical suffix for the sales order number, or blank |
-
-Run this command: `pronto_task.exe caancel_sales_order yourcsvfile.csv`.
