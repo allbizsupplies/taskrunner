@@ -94,6 +94,31 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 | `brand`       | Optional   | The supplier corresponding to the product's brand or manufacturer.                    |
 | `uom`         | Optional   | The product's unit of measure. (This should be omitted for items with stock on hand.) |
 
+### update_product_gtin
+
+Update a product's GTIN record(s)
+
+Command example: `pronto_task.exe update_product_gtin yourcsvfile.csv`
+
+Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Maintenance/Enquiry)
+
+#### Data Layout
+
+| Column name       | Required | Description                                                    |
+| :---------------- | :------- | :------------------------------------------------------------- |
+| `item_code`       | Required | The item code.                                                 |
+| `gtin`            | Required | The GTIN.                                                      |
+| `uom`             | Required | The existing unit of measure for this GTIN.                    |
+| `new_uom`         | Optional | The new unit of measure for this GTIN.                         |
+| `conv_factor`     | Required | The existing conversion factor for this GTIN.                  |
+| `new_conv_factor` | Optional | The new conversion factor for this GTIN.                       |
+| `length`          | Optional | The length of the item/package that this GTIN refers to.       |
+| `width`           | Optional | The width of the item/package that this GTIN refers to.        |
+| `height`          | Optional | The height of the item/package that this GTIN refers to.       |
+| `weight`          | Optional | The weight of the item/package that this GTIN refers to.       |
+| `own_box`         | Optional | The package code for this GTIN. Leave blank if not applicable. |
+| `publish`         | Required | Y = Publish this GTIN; N = Don't publish this GTIN.            |
+
 ### update_product_price
 
 Update a product's price record(s)
