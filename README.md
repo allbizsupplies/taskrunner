@@ -94,6 +94,36 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 | `brand`       | Optional   | The supplier corresponding to the product's brand or manufacturer.                    |
 | `uom`         | Optional   | The product's unit of measure. (This should be omitted for items with stock on hand.) |
 
+### update_product_price
+
+Update a product's price record(s)
+
+Command example: `pronto_task.exe update_product_price yourcsvfile.csv`
+
+Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Maintenance/Enquiry)
+
+#### Data Layout
+
+| Column name    | Required | Description                                                            |
+| :------------- | :------- | :--------------------------------------------------------------------- |
+| `item_code`    | Required | The item code.                                                         |
+| `price_region` | Required | The price region code. Leave blank to select the default price region. |
+| `price_rule`   | Optional | The price rule (algorithm) for this price region.                      |
+| `price_0`      | Optional | The lavel 0 price, excl. GST.                                          |
+| `qty_1`        | Optional | The level 1 quantity.                                                  |
+| `price_1`      | Optional | The lavel 1 price, excl. GST.                                          |
+| `qty_2`        | Optional | The level 2 quantity.                                                  |
+| `price_2`      | Optional | The lavel 2 price, excl. GST.                                          |
+| `qty_3`        | Optional | The level 3 quantity.                                                  |
+| `price_3`      | Optional | The lavel 3 price, excl. GST.                                          |
+| `qty_4`        | Optional | The level 4 quantity.                                                  |
+| `price_4`      | Optional | The lavel 4 price, excl. GST.                                          |
+| `rrp_ex`       | Optional | The RRP, excl. GST.                                                    |
+| `rrp_inc`      | Optional | The RRP, incl. GST.                                                    |
+| `prom_start`   | Optional | The start date for the promotional price, excl GST.                    |
+| `prom_end`     | Optional | The end date for the promotional price, excl GST.                      |
+| `prom_price`   | Optional | The promotional price, excl GST.                                       |
+
 ### update_product_supplier
 
 Update a product's stock supplier record(s)
