@@ -69,6 +69,26 @@ Required function: `INV.M184` (Inventory > Prices Control > Recalculate Prices)
 | `start_region`      | Optional | The start price region                                                      |
 | `end_region`        | Optional | The end price region                                                        |
 
+### transfer_stock
+
+Transfer stock between warehouses.
+
+Command example: `pronto_task.exe transfer_stock yourcsvfile.csv`
+
+Required function: `INV.T019` (Inventory > Inventory Transactions > Transfer Items (Direct))
+
+#### Data Layout
+
+| Column name | Required | Description                                                                                |
+| :---------- | :------- | :----------------------------------------------------------------------------------------- |
+| `item_code` | Required | The item code.                                                                             |
+| `reference` | Optional | A brief note (max 12 characters) for the adjustment.                                       |
+| `reason`    | Required | A valid reason code to categorise this stock adjustment (e.g. `01` for stock take).        |
+| `from_whs`  | Required | The warehouse the stock is to be transferred from.                                         |
+| `to_whs`    | Required | The warehouse the stock is to be transferred to.                                           |
+| `qty`       | Required | The quantity to transfer.                                                                  |
+| `uom`       | Optional | The unit of measure to use for this adjustment. Leave blank to use the item's default UOM. |
+
 ### update_product
 
 Update a product's stock master
