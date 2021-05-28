@@ -213,3 +213,21 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 | `average_cost` | Optional | The average cost of the product.            |
 | `minimum`      | Optional | The minimum stock quantity for the product. |
 | `maximum`      | Optional | The maximum stock quantity for the product. |
+
+### update_web_data
+
+Update a product's warehouse record(s)
+
+Command example: `pronto_task.exe update_product_warehouse yourcsvfile.csv`
+
+Required function: `ZWEB.X001` (Web Data / eChoice Integration > Stock Code Web Data Review)
+
+**Note: you need to open this function manually before running this command.**
+
+#### Data Layout
+
+| Column name  | Required | Description                                                  |
+| :----------- | :------- | :----------------------------------------------------------- |
+| `stock_code` | Required | The item code.                                               |
+| `web_desc`   | Required | The product description to be displayed on the online store. |
+| `online`     | Optional | Y = display this product on the online store.                |
