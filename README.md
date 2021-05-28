@@ -216,9 +216,9 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 
 ### update_web_data
 
-Update a product's warehouse record(s)
+Update a product's web status and description
 
-Command example: `pronto_task.exe update_product_warehouse yourcsvfile.csv`
+Command example: `pronto_task.exe update_web_data yourcsvfile.csv`
 
 Required function: `ZWEB.X001` (Web Data / eChoice Integration > Stock Code Web Data Review)
 
