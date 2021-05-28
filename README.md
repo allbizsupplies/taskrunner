@@ -9,8 +9,27 @@ This app automates the process of entering data in the Pronto Xi Thin Client.
 
 ## Usage
 
-1. Log into Pronto Thin Client and select company "Allbiz Supplies Pty. Ltd."
-2. Open a terminal and run a command from the list below.
+This program reads data from a CSV file and enters it into Pronto using keyboard macros. (That is, it simulates a person typing on a keyboard.)
+
+Before running any of the commands below, you need to have a few thing ready:
+
+1. Log into Pronto Thin Client and select the company "Allbiz Supplies Pty. Ltd."
+2. Create a CSV file with the data you want to enter into Pronto.
+3. Open Powershell or `cmd.exe`, and make sure you are in a folder where you can run `pronto_task.exe` and have access to your CSV file.
+
+### Preparing your data file.
+
+Your CSV file must be tab-delimited (AKA tab-separated), instead of comma-separated. The first row must include the headers for the columns. The heading names are not case-sensitive, and you can use spaces instead of underscores. (e.g. `item_code` and `Item Code` are the same.)
+
+You can quickly create a tab-delimited file by copy-pasting your table from Excel into a plain text file in Notepad. (Your file can have any extension you want; it doesn't have to be `.csv`.)
+
+### Executing a command
+
+To execute a command, type the command - as shown in the command examples below - into your Powershell or `cmd` prompt. Instead of `yourcsvfile.csv`, use the filename you've given to your tab-delimited CSV. This taskrunner will focus on the Thin Client, check that the correct company has been selected, and begin running a function.
+
+You cannot use your computer while the command is running.
+
+To stop a command from executing, press `Ctrl+Escape`.
 
 ## Commands
 
