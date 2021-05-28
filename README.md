@@ -119,3 +119,22 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 | `supp_new_price_date` | Optional | The supplier's future price.                                                             |
 | `supp_new_price`      | Optional | The date that the supplier's price will take effect.                                     |
 
+### update_product_warehouse
+
+Update a product's warehouse record(s)
+
+Command example: `pronto_task.exe update_product_warehouse yourcsvfile.csv`
+
+Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Maintenance/Enquiry)
+
+#### Data Layout
+
+| Column name    | Required | Description                                 |
+| :------------- | :------- | :------------------------------------------ |
+| `item_code`    | Required | The item code.                              |
+| `whse`         | Required | The warehouse code.                         |
+| `bin_loc`      | Optional | The BIN location for the product.           |
+| `bulk_loc`     | Optional | The bulk storage location for the product.  |
+| `average_cost` | Optional | The average cost of the product.            |
+| `minimum`      | Optional | The minimum stock quantity for the product. |
+| `maximum`      | Optional | The maximum stock quantity for the product. |
