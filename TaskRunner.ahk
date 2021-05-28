@@ -10,7 +10,6 @@
 #include Function/ShelfTicketsFunction.ahk
 #include Function/StockAdjustmentFunction.ahk
 #include Function/StockMaintenanceFunction.ahk
-#include Function/WebSortcodeFunction.ahk
 #include Function/WebStockcodeReviewFunction.ahk
 
 
