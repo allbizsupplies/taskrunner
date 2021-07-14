@@ -116,9 +116,21 @@ class TaskRunner {
   }
 
 
+  create_product_supplier(args) {
+    inputFile := args[1]
+    this.doOperation(StockMaintenanceFunction, "createSupplierRecord", inputFile)
+  }
+
+
   update_product_supplier(args) {
     inputFile := args[1]
     this.doOperation(StockMaintenanceFunction, "updateSupplierRecord", inputFile)
+  }
+
+
+  delete_product_supplier(args) {
+    inputFile := args[1]
+    this.doOperation(StockMaintenanceFunction, "deleteSupplierRecord", inputFile)
   }
 
 
