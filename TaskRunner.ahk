@@ -79,7 +79,7 @@ class TaskRunner {
 
 
   update_contract_item(args) {
-    inputFile := args[2]
+    inputFile := args[1]
     dataReader := new DataReader(inputFile)
     function := new ContractFunction(this.controller)
     function.open()
