@@ -4,7 +4,7 @@ This app automates the process of entering data in the Pronto Xi Thin Client.
 
 ## Installation
 
-1. Download **pronto_task.exe**.
+1. Download **pronto_task.exe**: https://github.com/allbizsupplies/taskrunner/raw/master/pronto_task.exe
 2. Optionally, add this file's location to your `Path` environment variable.
 
 ## Usage
