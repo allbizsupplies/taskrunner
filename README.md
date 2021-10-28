@@ -110,7 +110,7 @@ Required function: `INV.T019` (Inventory > Inventory Transactions > Transfer Ite
 
 ### update_product
 
-Update a product's stock master
+Update a product's stock master.
 
 Command example: `pronto_task.exe update_product yourcsvfile.csv`
 
@@ -132,6 +132,22 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 | `price_group` | Optional   | The price group (labelled as "Price Algor" in the thin client).                       |
 | `brand`       | Optional   | The supplier corresponding to the product's brand or manufacturer.                    |
 | `uom`         | Optional   | The product's unit of measure. (This should be omitted for items with stock on hand.) |
+
+### update_product_group
+
+Update a product's group.
+
+Command example: `pronto_task.exe update_product_group yourcsvfile.csv`
+
+Required function: `INV.M170` (Inventory > Inventory Maintenance > Maintain Bulk Codes)
+
+#### Data Layout
+
+| Column name | Required | Description                   |
+| :---------- | :------- | :---------------------------- |
+| `item_code` | Required | The item code.                |
+| `group`     | Required | The product's existing group. |
+| `new_group` | Required | The product's new group.      |
 
 ### update_product_gtin
 
@@ -160,7 +176,7 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 
 ### update_product_price
 
-Update a product's price record(s)
+Update a product's price record(s).
 
 Command example: `pronto_task.exe update_product_price yourcsvfile.csv`
 
@@ -190,7 +206,7 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 
 ### update_product_supplier
 
-Update a product's stock supplier record(s)
+Update a product's stock supplier record(s).
 
 Command example: `pronto_task.exe update_product_supplier yourcsvfile.csv`
 
@@ -215,7 +231,7 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 
 ### update_product_warehouse
 
-Update a product's warehouse record(s)
+Update a product's warehouse record(s).
 
 Command example: `pronto_task.exe update_product_warehouse yourcsvfile.csv`
 
@@ -235,7 +251,7 @@ Required function: `INV.M138` (Inventory > Inventory Maintenance > Inventory Mai
 
 ### update_web_data
 
-Update a product's web status and description
+Update a product's web status and description.
 
 Command example: `pronto_task.exe update_web_data yourcsvfile.csv`
 
