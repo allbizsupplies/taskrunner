@@ -108,6 +108,33 @@ Required function: `INV.T019` (Inventory > Inventory Transactions > Transfer Ite
 | `qty`       | Required | The quantity to transfer.                                                                  |
 | `uom`       | Optional | The unit of measure to use for this adjustment. Leave blank to use the item's default UOM. |
 
+### update_contract_item
+
+Update a product's price on a contract.
+
+Command example: `pronto_task.exe update_contract_item yourcsvfile.csv`
+
+Required function: `INV.M111` (Accounts Receivable > Customer Pricing > Contract Management > Contracts by Contract No.)
+
+#### Data Layout
+
+| Column name | Required | Description                                                |
+| :---------- | :------- | :--------------------------------------------------------- |
+| `contract`  | Required | The contract code.                                         |
+| `item_code` | Required | The item code.                                             |
+| `qty_1`     | Required | The first quantity break. This should normally be set to 1 |
+| `price_1`   | Required | The price for first quantity break.                        |
+| `qty_2`     | Required | Quantity break #2. Set to `999999` if unused.              |
+| `price_2`   | Required | Price #2. Set to `0.0000` if unused.                       |
+| `qty_3`     | Required | Quantity break #3. Set to `999999` if unused.              |
+| `price_3`   | Required | Price #3. Set to `0.0000` if unused.                       |
+| `qty_4`     | Required | Quantity break #4. Set to `999999` if unused.              |
+| `price_4`   | Required | Price #4. Set to `0.0000` if unused.                       |
+| `qty_5`     | Required | Quantity break #5. Set to `999999` if unused.              |
+| `price_5`   | Required | Price #5. Set to `0.0000` if unused.                       |
+| `qty_6`     | Required | Quantity break #6. Set to `999999` if unused.              |
+| `price_6`   | Required | Price #6. Set to `0.0000` if unused.                       |
+
 ### update_product
 
 Update a product's stock master.
